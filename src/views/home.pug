@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    style
+      include styles.css
+  body
+    h1 Haga su consulta:
+    h2
+  form(method='post' action='/')
+    textarea(rows='5' cols='50' name='query' required='' placeholder='Select...')
+    br
+    input(type='submit')
+
+    table.table
+    if (results)
+     table( border="black" class="tabla" align="center" )
+      thead
+        each col in fields
+          th= col.name
+      tbody
+        each row in results
+          tr
+            each col in fields
+              td= row[col.name]
+
+if(error)
+  each col in error
+    h3=col.error
